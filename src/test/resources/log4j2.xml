@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <File name="AutomationFile" fileName="output/automation.log" append="true">
+            <PatternLayout pattern="%d{ISO8601}{GMT} %p %t [%C.%M %F:%L] %m%n"/>
+        </File>
+        <Console name="AutomationConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ISO8601}{GMT} %p %m%n"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+    </appenders>
+    <loggers>
+        <logger name="tests.TestBase" additivity="true" level="INFO">
+            <appender-ref ref="AutomationFile"/>
+            <appender-ref ref="AutomationConsole"/>
+        </logger>
+        <root level="INFO">
+            <appender-ref ref="AutomationFile"/>
+            <appender-ref ref="AutomationConsole"/>
+        </root>
+    </loggers>
+</configuration>
